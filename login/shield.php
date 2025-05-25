@@ -13,15 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $consulta->execute();
         $usuario = $consulta->fetch();
 
-        if ($usuario) {
-            if ($senha === $usuario['senha']) { 
-                $_SESSION['email'] = $usuario['email'];
-                header('Location: loggedin.php');
-                exit;
-            } 
-            else {
-                echo '<h1>Usuário ou senha incorretos!</h1>';
-            }
+        if ($usuario and $senha === $usuario['senha']) {
+            $_SESSION['email'] = $usuario['email'];
+            header('Location: loggedin.php');
+            exit;
         }
         else {
             echo '<h1>Usuário ou senha incorretos!</h1>';
