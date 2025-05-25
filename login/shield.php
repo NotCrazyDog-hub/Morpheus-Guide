@@ -5,8 +5,8 @@ require 'connection.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($_POST['email']) and !empty($_POST['senha'])) {
 
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
+        $email = trim($_POST['email']);
+        $senha = trim($_POST['senha']);
 
         $consulta = $connection->prepare('SELECT * FROM login WHERE email = :e');
         $consulta-> bindValue(':e', $email);
