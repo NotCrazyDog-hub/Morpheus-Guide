@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = trim($_POST['email']);
         $senha = trim($_POST['senha']);
 
-        $consulta = $connection->prepare('SELECT * FROM login WHERE email = :e');
+        $consulta = $connection->prepare('SELECT * FROM usuarios WHERE email = :e');
         $consulta-> bindValue(':e', $email);
         $consulta->execute();
         $usuario = $consulta->fetch();

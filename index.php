@@ -7,18 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <img src="assets/logo.png" alt="Logo da Morpheus Guide">
+    <div id="espaco-em-branco">
+        <img src="assets/sheep.png" alt="Logo da Morpheus Guide">
+    </div>
     <div id="caixa-de-login">
-        <h1>Bem-vindo de volta aos braços de Morfeu!</h1>
+        <h1>BEM-VINDO DE VOLTA AO SEU GUIA!</h1>
         <form action="shield.php" method="POST">
-            <label for="email">E-MAIL *</label>
-            <br>
-            <input type="email" name="email" class="email" placeholder="Ex.: root@gmail.com">
-            <br>
-            <label for="senha">SENHA *</label>
-            <br>
-            <input type="password" name="senha" class="senha" placeholder="Ex.: senhaNadaSegura490">
-            <br>
+            <label for="email">E-MAIL</label>
+            <input type="email" id="email" name="email" placeholder="Ex.: root@gmail.com" required>
+            <label for="senha">SENHA</label>
+            <input type="password" id="senha" name="senha" placeholder="Ex.: senhaNadaSegura490" required>
             <input type="submit" value="ACESSAR">
         </form>
     </div>

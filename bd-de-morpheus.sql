@@ -4,11 +4,10 @@ USE morpheusguide;
 CREATE TABLE Usuarios(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(100) NOT NULL UNIQUE,
-    senha VARCHAR(255) NOT NULL,
-    nome VARCHAR(50)
+    senha VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE RotinaS(
+CREATE TABLE Rotinas(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     Usuario_id INT,
     titulo VARCHAR(50),
@@ -29,7 +28,7 @@ CREATE TABLE Diarios(
 
 CREATE TABLE Horarios_ideais(
 	id INT PRIMARY KEY AUTO_INCREMENT,
-    Rotina_id INT,
+    Rotinas_id INT,
     horarios_para_dormir TIME NOT NULL,
-    FOREIGN KEY (Rotina_id) REFERENCES Rotina(id)
+    FOREIGN KEY (Rotinas_id) REFERENCES Rotinas(id)
 );

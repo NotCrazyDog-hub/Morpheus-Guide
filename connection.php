@@ -1,7 +1,7 @@
 <?php
 
 try {
-    $connection = new PDO("mysql:host=localhost;dbname=morpheus;charset=utf8mb4", 
+    $connection = new PDO("mysql:host=localhost;dbname=morpheusguide;charset=utf8mb4", 
    "root", "helloWorld013", [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
