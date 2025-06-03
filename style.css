@@ -70,4 +70,13 @@ input[type="submit"] {
     font-weight: bold;
 }
 
-/*Não gosto de número ímpar, vai ficar 30*/
+#recuperar-senha {
+    font-size: 10px;
+    margin-top: 1px;
+}
+
+#acessar-conta {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 10px;
+}
