@@ -21,6 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     header('Location: index.php');
                     exit;
                 }
+                else {
+                    $mensagem = 'FALHA AO TENTAR INSERIR SEUS DADOS!';
+                    require 'create_screen.php';
+                    exit;
+                }
             }
             else {
                 $mensagem = 'ESTE USUÁRIO JÁ EXISTE!';
