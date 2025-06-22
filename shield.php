@@ -13,20 +13,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $consulta->execute();
         $usuario = $consulta->fetch();
 
-        if ($usuario and $senha === $usuario['senha']) {
+        if ($usuario and password_verify($senha, $usuario['senha'])) {
             $_SESSION['email'] = $usuario['email'];
-            header('Location: loggedin.php');
+            header('Location: horarios/loggedin.php');
             exit;
         }
         else {
-            echo '<h1>Usuário ou senha incorretos!</h1>';
+            $mensagem = 'USUÁRIO OU SENHA INCORRETOS!';
+            require 'index.php';
+            exit;
         }
     }
     else {
-        echo '<h1>Preencha todos os campos!</h1>';
+        $mensagem = 'PREENCHA TODOS OS CAMPOS!';
+        require 'index.php';
+        exit;
     }
 }
 else {
-    header('Location: index.php');
+    $mensagem = 'FALHA AO LOGAR';
+    require 'index.php';
     exit;
 }

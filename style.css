@@ -30,7 +30,6 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 50px;
 }
 
 h1 {
@@ -44,6 +43,12 @@ form {
     max-width: 300px;
     display: flex;
     flex-direction: column;
+}
+
+#mensagem {
+    text-align: center;
+    font-size: 16px;
+    color: white;   
 }
 
 label {
@@ -75,8 +80,10 @@ input[type="submit"] {
     margin-top: 1px;
 }
 
-#acessar-conta {
+#texto-conta {
     text-align: center;
     margin-top: 10px;
     font-size: 10px;
+    color: white;
+    text-decoration: none;
 }
