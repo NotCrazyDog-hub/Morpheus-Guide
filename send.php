@@ -14,10 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $consulta->execute();
 
             if ($consulta->rowCount() == 0) {
-                $consulta = $connection->prepare("INSERT INTO usuarios (email, senha) VALUES (:e, :s)");
-                $consulta->bindValue(":e", $email);
-                $consulta->bindValue(":s", $senhaSegura);
-                if ($consulta->execute()) {
+                $inserir = $connection->prepare("INSERT INTO usuarios (email, senha) VALUES (:e, :s)");
+                $inserir->bindValue(":e", $email);
+                $inserir->bindValue(":s", $senhaSegura);
+                if ($inserir->execute()) {
                     header('Location: index.php');
                     exit;
                 }
