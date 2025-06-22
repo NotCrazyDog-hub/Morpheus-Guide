@@ -27,7 +27,7 @@
             <label for="senha">SENHA *</label>
             <input type="password" id="senha" name="senha">
             <input type="submit" value="CRIAR CONTA">
-            <a href="index.php"><p id="texto-conta">JÁ TEM UMA CONTA? ENTRE JÁ!</p></a>
+            <a href="index.php" id="texto-conta">JÁ TEM UMA CONTA? ENTRE JÁ!</a>
         </form>
     </div>
 </body>

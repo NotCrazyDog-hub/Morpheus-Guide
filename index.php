@@ -12,7 +12,7 @@
     </div>
     <div id="caixa-de-login">
         <h1>BEM-VINDO DE VOLTA AO SEU GUIA!</h1>
-        <form action="shield.php" method="POST">
+        <form action="verify.php" method="POST">
             <p id="mensagem"> 
                 <?php
                 if (isset($mensagem)) {
@@ -28,7 +28,7 @@
             <input type="password" id="senha" name="senha">
             <p id="recuperar-senha">ESQUECEU A SENHA? RECUPERE!</p>
             <input type="submit" value="ACESSAR">
-            <a href="create_screen.php"><p id="texto-conta">NÃO TEM UMA CONTA? CRIE UMA!</p></a>
+            <a href="create_screen.php" id="texto-conta">NÃO TEM UMA CONTA? CRIE UMA!</a>
         </form>
     </div>
 </body>
