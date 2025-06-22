@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($usuario and password_verify($senha, $usuario['senha'])) {
             $_SESSION['email'] = $usuario['email'];
-            header('Location: horarios/loggedin.php');
+            header('Location: telas/loggedin.php');
             exit;
         }
         else {
