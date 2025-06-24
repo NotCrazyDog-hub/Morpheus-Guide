@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $usuario = $consulta->fetch();
 
         if ($usuario and password_verify($senha, $usuario['senha'])) {
-            $_SESSION['email'] = $usuario['email'];
+            $_SESSION['id_usuario'] = $usuario['id'];
             header('Location: telas/loggedin.php');
             exit;
         }

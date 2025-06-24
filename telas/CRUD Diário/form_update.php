@@ -9,12 +9,12 @@ require '../../shield.php';
     <title>Document</title>
 </head>
 <body>
-    <form action="sendDi.php" method="get">
-        <input type="hidden" name="id">
+    <form action="update.php" method="get">
+        <input type="hidden" name="id" id="id" value="<?php echo $_GET['id']; ?>">
         <br>
-        titulo <input type="text" name="titulo" id="titulo">
+        titulo <input type="text" name="titulo" id="titulo" value="<?php echo $_GET['titulo'];?>">
         <br>
-        conteudo <input type="text" name="conteudo" id="conteudo">
+        conteudo <input type="text" name="conteudo" id="conteudo" value="<?php echo $_GET['conteudo'];?>">
         <br>
         <input type="submit" value="escrever">
     </form>
