@@ -1,7 +1,7 @@
 <?php
 require '../../connection.php';
 
-    $id = $_GET['id'];
+    $id = $_POST['id'];
     
     $consulta = $connection->prepare("SELECT * FROM diarios WHERE id = :i");
     $consulta->bindValue(":i", $id);

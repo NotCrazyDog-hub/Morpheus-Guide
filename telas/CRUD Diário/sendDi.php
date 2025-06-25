@@ -2,24 +2,24 @@
 require '../../connection.php';
 require '../../shield.php';
 
-    if (!empty($_GET['titulo']) and !empty($_GET['conteudo'])) {
+    if (!empty($_POST['titulo']) and !empty($_POST['conteudo'])) {
         
-        $titulo = trim($_GET['titulo']);
-        $conteudo = trim($_GET['conteudo']);
-        $tempo = date('Y-m-d H:i');
+        $titulo = trim($_POST['titulo']);
+        $conteudo = trim($_POST['conteudo']);
+        $tempoGeral = date('Y-m-d H:i');
         $id_usuario = $_SESSION['id_usuario'];
 
         $inserir = $connection->prepare("INSERT INTO diarios (titulo, conteudo, criado_em, Usuario_id) VALUES (:t, :c, :d, :i)");
         $inserir->bindValue(":t", $titulo);
         $inserir->bindValue(":c", $conteudo);
-        $inserir->bindValue(":d", $tempo);
+        $inserir->bindValue(":d", $tempoGeral);
         $inserir->bindValue(":i", $id_usuario);
         if ($inserir->execute()) {
             if ($inserir->rowCount() > 0) {
                 $id = null;
                 $titulo = null;
                 $conteudo = null;
-                $tempo = null;
+                $tempoGeral = null;
                 header('Location: index.php');
                 exit;
         }  

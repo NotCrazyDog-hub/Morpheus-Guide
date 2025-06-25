@@ -8,48 +8,64 @@ require '../../shield.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SEUS DIÁRIOS</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <a href="createDi.php">Criar</a>
-    <br>
-    <br>
-    <table border="1" width="100%">
-        <tr>
-            <th>Titulo</th>
-            <th>Criado em</th>
-            <th>Ações</th>
-        </tr>
-        <?php
-try {
-    $stmt = $connection->prepare("SELECT * FROM diarios");
-
-    if ($stmt->execute()) { 
-        while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) { ?>
+    <aside>
+        <nav>
+            <a class="link" href="CRUD Hora/index.php">MINHA ROTINA</a>
+            <a class="link" href="index.php">MEUS DIÁRIOS</a>
+        </nav>
+    </aside>
+    <main>
+        <h2 class="titulo">NÃO DURMA ESTRESSADO! ESCREVA SUAS PREOCUPAÇÕES:</h2>
+        <br>
+        <a id="botao-criar" href="createDi.php">+ CRIAR</a>
+        <br>
+        <h2 class="titulo">MEUS DIÁRIOS:</h2>
+        <table>
             <tr>
-                <td><?php echo $rs->titulo ?></td>
-                <td><?php echo $rs->criado_em ?></td>
-                <td>
-                    <form action='form_update.php' method='get'>
-                        <input type='hidden' name='id' value='<?php echo $rs->id?>'>
-                        <input type='hidden' name='titulo' id='titulo' value='<?php echo $rs->titulo?>'>
-                        <input type='hidden' name='conteudo' id='conteudo' value='<?php echo $rs->conteudo?>'>
-                        <input type='submit' value='[Visualizar/Editar]'>
-                    </form>
-                    <form action="delete.php" method="get">
-                        <input type='submit' value='[Excluir]'>
-                    </form>
-                </td>
-        <?php 
-        }
-    } else {
-        echo "Erro: Não foi possível recuperar os dados do banco de dados";
-    }
-} catch (PDOException $erro) {
-    echo "Erro: ".$erro->getMessage();
-}
-?>
-
-    </table>
+            <th class="categoria">ID:</th>
+                <th class="categoria">TÍTULO:</th>
+                <th class="categoria">CRIADO EM:</th>
+                <th class="categoria">AÇÕES:</th>
+            </tr>
+            <?php
+                try {
+                    $consulta = $connection->prepare("SELECT * FROM diarios");
+    
+                    if ($consulta->execute()) { 
+                        while ($pegar = $consulta->fetch(PDO::FETCH_OBJ)) { ?>
+                       <tr>
+                        <td class="celula"><?php echo $pegar->id ?></td>
+                           <td class="celula"><?php echo $pegar->titulo ?></td>
+                           <td class="celula"><?php echo $pegar->criado_em?></td>
+                           <td class="celula">
+                               <form action='form_update.php' method='post'>
+                                   <input type='hidden' name='id' value='<?php echo $pegar->id?>'>
+                                   <input type='hidden' name='titulo' id='titulo' value='<?php echo $pegar->titulo?>'>
+                                   <input type='hidden' name='conteudo' id='conteudo' value='<?php echo $pegar->conteudo?>'>
+                                   <input type='submit' value='[Visualizar/Editar]'>
+                               </form>
+                               <form action="delete.php" method="post">
+                                   <input type='hidden' name='id' value='<?php echo $pegar->id?>'>
+                                   <input type='submit' value='[Excluir]'>
+                               </form>
+                           </td>
+                       </tr>
+                <?php 
+                        }
+                }  
+                else {
+                    echo "Erro: Não foi possível recuperar os dados do banco de dados";
+                }
+            } 
+            catch (PDOException $erro) {
+                echo "Erro: ".$erro->getMessage();
+            }
+            ?>
+        </table> 
+    </main>
 </body>
 </html>
