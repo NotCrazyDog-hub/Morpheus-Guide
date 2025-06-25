@@ -30,4 +30,7 @@ if (!empty($_POST['titulo']) and !empty($_POST['conteudo'])) {
 
     }
 }
+else {
+    echo 'Você não preencheu os campos';
+}
 ?>
