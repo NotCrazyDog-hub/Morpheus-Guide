@@ -1,6 +1,6 @@
 <?php
 require '../../connection.php';
-require '../../shield.php';
+
 
     if (!empty($_POST['titulo']) and !empty($_POST['conteudo'])) {
         
@@ -27,4 +27,7 @@ require '../../shield.php';
             echo "Erro ao tentar efetivar cadastro";
         }
     }
+}
+else {
+    echo 'Você não preencheu os campos'
 }
