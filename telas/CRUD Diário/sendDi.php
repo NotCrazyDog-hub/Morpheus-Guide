@@ -23,11 +23,11 @@ require '../../connection.php';
                 header('Location: index.php');
                 exit;
         }  
-        else {
+            else {
             echo "Erro ao tentar efetivar cadastro";
+            }
         }
     }
-}
-else {
-    echo 'Você não preencheu os campos'
-}
+    else {
+        echo 'Você não preencheu os campos';
+    }
