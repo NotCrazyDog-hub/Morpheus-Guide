@@ -2,24 +2,25 @@
 require '../../connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!empty($_POST['titulo']) and !empty($_POST['conteudo'])) {
+    if (!empty($_POST['hora'])) {
         $id = $_POST['id'];
-        $titulo = trim($_POST['titulo']);
-        $conteudo = trim($_POST['conteudo']);
+        $hora = $_POST['hora'];
+        $horaAcordar = strtotime("2008-08-21 $hora");
+        $horaDormir = date('H:i', $horaAcordar - (8 * 3600));
     
-        $consulta = $connection->prepare("SELECT * FROM diarios WHERE id = :i");
+        $consulta = $connection->prepare("SELECT * FROM rotinas WHERE id = :i");
         $consulta->bindValue(":i", $id);
         $consulta->execute();
-        $diario = $consulta->fetch();
-        if (!$diario) {
-            $mensagem = "DIÁRIO NÃO ENCONTRADO";
+        $rotinas = $consulta->fetch();
+        if (!$rotinas) {
+            $mensagem = "ROTINA NÃO ENCONTRADA";
             require "form_update.php";
             exit;
         }
         else {
-            $atualizar = $connection->prepare("UPDATE diarios SET titulo = :t, conteudo = :c WHERE id = :i");
-            $atualizar->bindValue(":t", $titulo);
-            $atualizar->bindValue(":c", $conteudo);
+            $atualizar = $connection->prepare("UPDATE rotinas SET hora_de_acordar = :a, horario_de_dormir_escolhido = :d WHERE id = :i");
+            $atualizar->bindValue(":a", $hora);
+            $atualizar->bindValue(":d", $horaDormir);
             $atualizar->bindValue(":i", $id);
             if ($atualizar->execute()) {
                 header('Location: index.php');
@@ -40,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 else {
-    $mensagem = "FALHA AO ATUALIZAR DIÁRIO";
+    $mensagem = "FALHA AO ATUALIZAR SEU HORÁRIO";
     require "form_update.php";
     exit;
 }
