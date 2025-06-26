@@ -1,7 +1,10 @@
 <?php
 session_start();
 require '../../connection.php';
-require '../../shield.php';
+if (!isset($_SESSION['id_usuario'])) {
+    header('Location: ../../index.php');
+    exit;
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($_POST['titulo']) and !empty($_POST['conteudo'])) {
