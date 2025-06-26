@@ -1,7 +1,3 @@
-<?php
-session_start();
-require '../../shield.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

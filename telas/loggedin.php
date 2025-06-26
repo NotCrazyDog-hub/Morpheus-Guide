@@ -14,7 +14,7 @@ require '../shield.php';
     <h1>Logado com sucesso! Seja bem-vindo</h1>
     <a href="logout.php">Sair</a>
     <br>
-    <a href="CRUD-Diario/index.php">Crie seu diário</a>
+    <a href="CRUD Diário/index.php">Crie seu diário</a>
     <br>
     <a href="CRUD-Hora/index.php">Planeje sua hora</a>
 </body>
